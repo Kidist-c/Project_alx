@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
 function Navbar() {
   return (
     <div className='flex justify-around p-4 float-right bg-red-600 w-[100%] text-white hover:bg-sky-700 m-auto '>

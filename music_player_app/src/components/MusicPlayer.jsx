@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-function MusicPlayer() {
+const MusicPlayer = () => {
   return (
-    <div>MusicPlayer</div>
-  )
-}
+    <div className="border rounded p-4 mt-4">
+      <h2 className="text-xl font-semibold">Now Playing</h2>
+      {/* Display currently playing track information here */}
+    </div>
+  );
+};
 
-export default MusicPlayer
+export default MusicPlayer;
+
+
