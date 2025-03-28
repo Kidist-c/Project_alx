@@ -9,16 +9,17 @@ import Settings from './pages/Settings'
 import SignUp from './pages/SignUp'
 import UserProfile from './pages/UserProfile'
 import Library from './pages/Library'
-
+import Header from './components/Header'
 import Navbar from './components/Navbar'
 import SearchBar from './components/Searchbar'
+
   function App(){
     return(
       
       
-        <div className=" flex flex-col min-h-screen bg-gray-300">
+        <div className=" ">
            <Router>
-            
+            <Header/>
             <Navbar/>
             <SearchBar />
             
