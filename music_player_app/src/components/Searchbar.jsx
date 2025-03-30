@@ -1,35 +1,36 @@
-// src/components/SearchBar.jsx
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { searchTracks } from '../api/deezerApi';
 
-function SearchBar() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate();
+const SearchBar = ({ onSearch }) => {
+  const [query, setQuery] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    if (searchTerm.trim() !== '') {
-      navigate(`/artist/${searchTerm}`); // Navigate to artist detail page
-    }
+    if (!query.trim()) return;
+    
+    const tracks = await searchTracks(query);
+    onSearch(tracks);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center">
-      <input
-        type="text"
-        placeholder="Search for artist..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2 w-full sm:w-auto"
-      />
-      <button
-        type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-      >
-        Search
-      </button>
+    <form onSubmit={handleSearch} className="mb-6">
+      <div className="flex gap-2">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search for songs..."
+          className="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+        />
+        <button
+          type="submit"
+          className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+        >
+          Search
+        </button>
+      </div>
     </form>
   );
-}
+};
 
 export default SearchBar;
