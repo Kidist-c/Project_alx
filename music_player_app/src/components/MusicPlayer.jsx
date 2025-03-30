@@ -1,6 +1,8 @@
 // src/components/MusicPlayer.jsx
 import React, { useState, useEffect, useRef } from 'react';
-
+import {useLocalStorage} from '../hooks/useLocalStorage'
+import MusicCard from './MusicCard';
+import Searchbar from './Searchbar'
 function MusicPlayer({ currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
