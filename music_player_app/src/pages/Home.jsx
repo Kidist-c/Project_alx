@@ -1,8 +1,11 @@
 import React from 'react'
+import MusicPlayer from '../components/MusicPlayer'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+     <MusicPlayer/>
+    </div>
   )
 }
 
